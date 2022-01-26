@@ -4,13 +4,18 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-from scrapy.loader import ItemLoader
+from scrapy.loader.processors import MapCompose
+
+
+def remove_line_breaks(value):
+    return value.replace('\n','').strip()
 
 class TudogostososcraperItem(scrapy.Item):
     # define the fields for your item here like:
-    name = scrapy.Field()
-    preparation_time = scrapy.Field()
-    portions = scrapy.Field()
-    link = scrapy.Field()
-    author = scrapy.Field()
-    likes = scrapy.Field()
+    name = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
+    preparation_time = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
+    portions = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
+    link = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
+    author = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
+    likes = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
+    first_ingredient = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
