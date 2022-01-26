@@ -18,4 +18,4 @@ class TudogostososcraperItem(scrapy.Item):
     link = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
     author = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
     likes = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
-    first_ingredient = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
+    ingredients = scrapy.Field(input_processor=MapCompose(remove_line_breaks))
